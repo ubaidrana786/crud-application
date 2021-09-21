@@ -1,18 +1,18 @@
 {
   "posts": [
     {
-      "id": 1,
-      "name": "ubaid",
+      "name": "ubaid sarwar",
       "email": "ubaidrana755@gmail.com",
       "address": "phool nagar",
-      "phone": "03057176599"
+      "phone": "03057176599",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "ubaid",
-      "email": "ubaidrana755@gmail.com",
-      "address": "phool nagar",
-      "phone": "03057176599"
+      "name": "sdfg",
+      "email": "gdfg",
+      "address": "fgsdg",
+      "phone": "sdfgsdfg",
+      "id": 2
     }
   ]
 }

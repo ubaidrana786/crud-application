@@ -3,7 +3,7 @@ import image from '../Assest/Image/not.png'
  const NotFound = () => {
     return (
         <div>
-            <img src={image} alt="" />
+            <img src={image} style={{width:"60%"}} alt="" />
         </div>
     )
 }

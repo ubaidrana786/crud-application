@@ -4,6 +4,7 @@
 import { CodeFor } from "./components/CodeFor";
 
 import { AddUser } from "./components/AddUser";
+
 import {
   BrowserRouter,
   Route,
@@ -13,6 +14,7 @@ import {
 import { AppBar, Toolbar,makeStyles } from "@material-ui/core";
 import AllUser from "./components/AllUser";
 import NotFound from "./components/NotFound";
+import Update from "./components/Update";
 const usestyles = makeStyles({
   header: {
     backgroundColor: "black",
@@ -32,6 +34,7 @@ function App() {
         <AppBar className={classes.header} position="static">
           <Toolbar>
             <NavLink exact to="/" className={classes.tabs}>
+              
               Code For User
             </NavLink>
            
@@ -40,6 +43,9 @@ function App() {
             </NavLink>
             <NavLink exact to="all" className={classes.tabs}>
               All User
+            </NavLink>
+            <NavLink exact to="update" className={classes.tabs}>
+              Update
             </NavLink>
           </Toolbar>
         </AppBar>
@@ -52,6 +58,9 @@ function App() {
           <Route exact path="/all">
             <AllUser/>
           </Route>
+          <Route exact path="/update">
+            <Update/>
+          </Route>
           <Route exact path="/" >
              <CodeFor />
           </Route>
@@ -60,6 +69,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
+      
     </div>
   );
 }

@@ -19,32 +19,49 @@ const usestyle = makeStyles({
   },
 });
 
-
-
 export const AddUser = () => {
   const [name, setname] = useState("")
+  const [email, setemail] = useState("")
+  const [address, setaddress] = useState("")
+  const [phone, setphone] = useState("")
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("http://localhost:3000/posts",{
+      method:"post",
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify({name,email,address,phone})
+    }).then((response)=>{
+      response.json().then((result)=>{
+        alert("form has been submitted")
+      })
+    })
+    
+}
+ 
   const classes = usestyle();
   return (
     <div>
-      <h2>Hello Add user</h2>
+      
       <FormGroup className={classes.formwidth}>
         <FormControl>
           <InputLabel>User Name</InputLabel>
-          <Input name="name" onChange={(e)=>{setname(e.target.value)}}/>
+          <Input value={name} onChange={e=>{setname(e.target.value)}}/>
         </FormControl>
         <FormControl>
           <InputLabel>Email</InputLabel>
-          <Input />
+          <Input value={email} onChange={e=>{setemail(e.target.value)}} />
         </FormControl>
         <FormControl>
           <InputLabel>Address</InputLabel>
-          <Input />
+          <Input value={address} onChange={e=>{setaddress(e.target.value)}} />
         </FormControl>
         <FormControl>
           <InputLabel>Phone</InputLabel>
-          <Input />
+          <Input value={phone} onChange={e=>{setphone(e.target.value)}} />
         </FormControl>
-        <Button variant="contained" color="primary">
+        <Button onClick={handleSubmit} variant="contained" color="primary">
           Add User
         </Button>
       </FormGroup>

@@ -9,7 +9,8 @@ import {
   } from "@material-ui/core";
  
   import { useState } from "react";
-  
+  import { useEffect } from 'react';
+  import { useParams } from 'react-router';
   const usestyle = makeStyles({
     formwidth: {
       width: "50%",
@@ -25,6 +26,31 @@ export default function Update() {
   const [address, setaddress] = useState("")
   const [phone, setphone] = useState("")
   const classes = usestyle();
+  const {id} = useParams()
+  useEffect(() => {
+    fetch('http://localhost:3000/posts/'+id).then((response) => {
+      response.json().then((result) => {
+          console.warn(result)
+      setname({ 
+               name:result.name,
+            })
+      })
+  })
+  })
+  const update = ()=>
+  {
+      fetch('http://localhost:3000/posts/'+id, {
+          method: "PATCH",
+          headers:{
+              'Content-Type':'application/json'
+          },
+          body: JSON.stringify(name)
+      }).then((result)=>{
+          result.json().then((resp)=>{
+              alert("Restaurant has heen Update")
+          })
+      })
+  }
     return (
         <div>
              <FormGroup className={classes.formwidth}>
@@ -44,7 +70,7 @@ export default function Update() {
           <InputLabel>Phone</InputLabel>
           <Input value={phone} onChange={e=>{setphone(e.target.value)}} />
         </FormControl>
-      <Button  variant="contained" color="primary">
+      <Button  variant="contained" color="primary" onClick={update}>
           Update User
         </Button>
       </FormGroup>

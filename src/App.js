@@ -58,7 +58,7 @@ function App() {
           <Route exact path="/all">
             <AllUser/>
           </Route>
-          <Route exact path="/update">
+          <Route exact path="/update/:id">
             <Update/>
           </Route>
           <Route exact path="/" >

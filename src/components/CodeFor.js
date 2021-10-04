@@ -17,10 +17,10 @@ export const CodeFor = () => {
              
               <Slider {...settings}>
                   <div>
-                      <img src={image1} style={{width:"100%",height:"60%" }} alt="" />
+                      <img src={image1} style={{width:"100%",height:"70%" }} alt="" />
                   </div>
                   <div>
-                      <img src={image2} style={{width:"100%",height:"60%" }} alt="" />
+                      <img src={image2} style={{width:"100%",height:"70%" }} alt="" />
                   </div>
                   
                  

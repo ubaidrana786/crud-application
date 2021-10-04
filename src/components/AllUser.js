@@ -82,22 +82,28 @@ import {
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import Notecontaxt from "./Contaxt/Notecontaxt";
 export default function AllUser() {
   const [users, setusers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/posts").then((response) => {
-      response.json().then((result) => {
-        setusers(result);
-      });
+   adduserdata()
+  },[]);
+ const adduserdata = ()=>{
+  fetch("http://localhost:3000/posts").then((response) => {
+    response.json().then((result) => {
+      setusers(result);
     });
   });
-
+ }
   function  Delete (id){
    fetch("http://localhost:3000/posts/"+ id ,{
     method: "DELETE",
    } ).then((response)=>{
        response.json().then((result)=>{
            alert("Dlete this")
+           adduserdata()
+          
        })
    })
   }
@@ -114,9 +120,11 @@ export default function AllUser() {
       },
     },
   });
+  const a = useContext(Notecontaxt)
   const classes = usestyle();
   return (
     <div>
+      <h1>This is a contaxt api {a.name} and calss name is {a.class}</h1>
       <Table className={classes.table}>
         <TableHead>
           <TableRow className={classes.thead}>

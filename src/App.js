@@ -15,6 +15,8 @@ import { AppBar, Toolbar,makeStyles } from "@material-ui/core";
 import AllUser from "./components/AllUser";
 import NotFound from "./components/NotFound";
 import Update from "./components/Update";
+import Login from "./components/Login";
+import Notestate from "./components/Contaxt/Notestate";
 const usestyles = makeStyles({
   header: {
     backgroundColor: "black",
@@ -30,6 +32,7 @@ function App() {
   const classes = usestyles();
   return (
     <div className="App">
+      <Notestate>
       <BrowserRouter>
         <AppBar className={classes.header} position="static">
           <Toolbar>
@@ -47,6 +50,9 @@ function App() {
             <NavLink exact to="update" className={classes.tabs}>
               Update
             </NavLink>
+            <NavLink exact to="login" className={classes.tabs}>
+              Log In
+            </NavLink>
           </Toolbar>
         </AppBar>
         <Switch>
@@ -61,6 +67,9 @@ function App() {
           <Route exact path="/update/:id">
             <Update/>
           </Route>
+          <Route exact path="/login">
+            <Login/>
+          </Route>
           <Route exact path="/" >
              <CodeFor />
           </Route>
@@ -69,7 +78,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-      
+      </Notestate>
     </div>
   );
 }
